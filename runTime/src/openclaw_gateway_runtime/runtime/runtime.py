@@ -1,6 +1,7 @@
 from __future__ import annotations
 
 import asyncio
+import os
 import uuid
 from dataclasses import dataclass
 from typing import TYPE_CHECKING, Dict, Optional
@@ -9,6 +10,7 @@ from ..infra.metrics import runtime_metrics
 from ..infra.structured_log import log_event
 from ..protocol import Frame, frame
 from ..transport import Endpoint
+from .assistant_agent_adapter import AssistantAgentAdapter
 from .openclaw_adapter import (
     AnthropicSkillsAdapter,
     CancelToken,
@@ -27,6 +29,35 @@ class ActiveRun:
     turn_id: str
     cancel: CancelToken
     task: "asyncio.Task[None]"
+
+
+def _select_runtime_adapter(*, user_config: Optional["UserConfig"] = None) -> OpenClawAdapter:
+    env = os.environ
+    requested = (
+        (env.get("OPENCLAW_RUNTIME_ADAPTER") or "").strip().lower().replace("-", "_")
+    )
+
+    if requested:
+        if requested == "assistant_agent":
+            return AssistantAgentAdapter()
+        if requested in {"anthropic", "anthropic_skills"}:
+            return AnthropicSkillsAdapter(user_config=user_config)
+        if requested in {"openclaw", "openclaw_cli", "cli"}:
+            return CliOpenClawAdapter()
+        if requested in {"stub", "stub_echo"}:
+            return StubEchoAdapter()
+        raise RuntimeError(
+            "Unknown OPENCLAW_RUNTIME_ADAPTER="
+            f"{env.get('OPENCLAW_RUNTIME_ADAPTER')!r}. "
+            "Supported values: assistant_agent, anthropic, openclaw_cli, stub."
+        )
+
+    # Existing adapter selection when no explicit runtime adapter is configured.
+    if (env.get("LLM_PROVIDER") or "").strip():
+        return AnthropicSkillsAdapter(user_config=user_config)
+    if env.get("OPENCLAW_REPO_PATH"):
+        return CliOpenClawAdapter()
+    return StubEchoAdapter()
 
 
 class RuntimeService:
@@ -51,19 +82,14 @@ class RuntimeService:
         self._user_config = user_config
         # Adapter selection:
         # 1) explicit adapter injection
-        # 2) LLM_PROVIDER set → AnthropicSkillsAdapter (supports anthropic/minimax/qwen)
-        # 3) OPENCLAW_REPO_PATH → CLI passthrough
-        # 4) stub
+        # 2) OPENCLAW_RUNTIME_ADAPTER when set
+        # 3) LLM_PROVIDER set → AnthropicSkillsAdapter (supports anthropic/minimax/qwen)
+        # 4) OPENCLAW_REPO_PATH → CLI passthrough
+        # 5) stub
         if adapter is not None:
             self._adapter = adapter
         else:
-            env = __import__("os").environ
-            if (env.get("LLM_PROVIDER") or "").strip():
-                self._adapter = AnthropicSkillsAdapter(user_config=user_config)
-            elif env.get("OPENCLAW_REPO_PATH"):
-                self._adapter = CliOpenClawAdapter()
-            else:
-                self._adapter = StubEchoAdapter()
+            self._adapter = _select_runtime_adapter(user_config=user_config)
         self._active_by_session: Dict[str, ActiveRun] = {}
         self._history_by_session: Dict[str, list[str]] = {}
         self._lock = asyncio.Lock()
@@ -238,4 +264,3 @@ class RuntimeService:
             return
 
         await ep.send(frame(type="error", error={"code": "run_not_found", "run_id": run_id, "session_id": session_id}))
-
