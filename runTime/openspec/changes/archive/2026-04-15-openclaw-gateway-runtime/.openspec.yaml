@@ -1,0 +1,6 @@
+# OpenSpec change manifest (hand-scaffolded; CLI unavailable in this environment)
+schema: spec-driven
+change:
+  id: openclaw-gateway-runtime
+  title: OpenClaw Runtime 与 Gateway 分离部署
+  status: implementing

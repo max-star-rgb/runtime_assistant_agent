@@ -1,0 +1,5 @@
+websockets>=14.0
+ddgs>=9.13.0
+patchright>=1.58.0
+playwright>=1.52.0
+setuptools

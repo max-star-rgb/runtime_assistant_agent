@@ -14,5 +14,7 @@
 **/*.egg-info/
 **/.venv/
 **/venv/
+**/.claude/
 **/.env
 **/.env.*
+!**/.env.example

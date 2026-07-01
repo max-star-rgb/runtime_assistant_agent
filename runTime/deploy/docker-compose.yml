@@ -1,0 +1,24 @@
+name: openclaw
+
+services:
+  openclaw-runtime:
+    container_name: openclaw-runtime
+    build:
+      context: ..
+      dockerfile: deploy/Dockerfile
+    ports:
+      - "${GATEWAY_PORT:-8765}:8765"
+    env_file:
+      - ../.env
+    environment:
+      PYTHONUNBUFFERED: "1"
+      BROWSER_HEADLESS: "true"
+    volumes:
+      - ../logs:/app/logs
+      - ../.env:/app/.env:ro
+      - ../cookies:/app/cookies:ro
+      - openclaw-memory:/app/data/memory
+    restart: unless-stopped
+
+volumes:
+  openclaw-memory:

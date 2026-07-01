@@ -1,0 +1,22 @@
+  完整时序：
+
+  电话侧发送:  message.user
+  服务端返回:  run.started          ← 开始（可选监听）
+              stream.chunk          ← 流式文本片段 ×N
+              stream.chunk
+              ...
+              run.end               ← 本轮回复结束
+
+  run.end 帧结构：
+
+  {
+    "v": 1,
+    "type": "run.end",
+    "session_id": "...",
+    "run_id": "...",
+    "user_id": "...",
+    "reason": "completed",
+    "payload": {
+      "expects_reply": true
+    }
+  }
