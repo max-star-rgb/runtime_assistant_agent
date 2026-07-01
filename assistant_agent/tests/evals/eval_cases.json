@@ -1,0 +1,2133 @@
+[
+  {
+    "id": "intent_chat_001",
+    "category": "intent",
+    "text": "这个搭配思路可以吗",
+    "expected_intent": "chat",
+    "expected_tools": [],
+    "must_not_call": [
+      "product_search",
+      "price_compare",
+      "image_generation",
+      "render_3d",
+      "vision_understanding"
+    ],
+    "suite": "routing"
+  },
+  {
+    "id": "intent_followup_001",
+    "category": "intent",
+    "text": "这个",
+    "expected_intent": "ask_followup",
+    "expected_tools": [],
+    "must_not_call": [
+      "product_search",
+      "price_compare",
+      "image_generation",
+      "render_3d",
+      "vision_understanding"
+    ],
+    "suite": "routing"
+  },
+  {
+    "id": "intent_save_memory_001",
+    "category": "intent",
+    "text": "记住我喜欢日系简约风格",
+    "expected_intent": "save_memory",
+    "expected_tools": [
+      "memory_save"
+    ],
+    "must_not_call": [
+      "product_search",
+      "price_compare"
+    ],
+    "suite": "routing"
+  },
+  {
+    "id": "intent_retrieve_memory_001",
+    "category": "intent",
+    "text": "上次那个黑色包",
+    "expected_intent": "retrieve_memory",
+    "expected_tools": [
+      "memory_retrieval"
+    ],
+    "must_not_call": [
+      "image_generation",
+      "render_3d"
+    ],
+    "suite": "routing"
+  },
+  {
+    "id": "intent_render_001",
+    "category": "intent",
+    "text": "看看效果，放到客厅里",
+    "expected_intent": "render_3d",
+    "expected_tools": [
+      "render_3d"
+    ],
+    "must_not_call": [
+      "image_generation",
+      "price_compare"
+    ],
+    "suite": "routing"
+  },
+  {
+    "id": "routing_search_001",
+    "category": "routing",
+    "text": "帮我找相似款",
+    "expected_intent": "search_product",
+    "expected_tools": [
+      "product_search"
+    ],
+    "must_not_call": [
+      "price_compare",
+      "image_generation"
+    ],
+    "suite": "routing"
+  },
+  {
+    "id": "routing_search_002",
+    "category": "routing",
+    "text": "搜索白色低帮运动鞋",
+    "expected_intent": "search_product",
+    "expected_tools": [
+      "product_search"
+    ],
+    "must_not_call": [
+      "price_compare",
+      "render_3d"
+    ],
+    "suite": "routing"
+  },
+  {
+    "id": "routing_compare_001",
+    "category": "routing",
+    "text": "哪个便宜",
+    "expected_intent": "compare_price",
+    "expected_tools": [
+      "price_compare"
+    ],
+    "must_not_call": [
+      "product_search",
+      "image_generation"
+    ],
+    "suite": "routing"
+  },
+  {
+    "id": "routing_image_001",
+    "category": "routing",
+    "text": "生成一张日系风格图",
+    "expected_intent": "generate_image",
+    "expected_tools": [
+      "image_generation"
+    ],
+    "must_not_call": [
+      "render_3d",
+      "price_compare"
+    ],
+    "suite": "routing"
+  },
+  {
+    "id": "routing_render_001",
+    "category": "routing",
+    "text": "渲染一个3D模型",
+    "expected_intent": "render_3d",
+    "expected_tools": [
+      "render_3d"
+    ],
+    "must_not_call": [
+      "image_generation",
+      "product_search"
+    ],
+    "suite": "routing"
+  },
+  {
+    "id": "multistep_001",
+    "category": "multistep",
+    "text": "找视频里的鞋子，比较价格，再生成海报",
+    "video_ids": [
+      "video_eval_1"
+    ],
+    "expected_intent": "multi_tool_task",
+    "expected_tools": [
+      "video_understanding",
+      "product_search",
+      "price_compare",
+      "image_generation"
+    ],
+    "must_not_call": [
+      "render_3d"
+    ],
+    "suite": "e2e",
+    "scenario_id": "full_multistep_image_search_compare_generate",
+    "expected_response_contains": [
+      "价格",
+      "图片"
+    ]
+  },
+  {
+    "id": "multistep_002",
+    "category": "multistep",
+    "text": "帮我找视频里的鞋子，比较价格，然后生成一张日系海报。",
+    "video_ids": [
+      "video_eval_2"
+    ],
+    "expected_intent": "multi_tool_task",
+    "expected_tools": [
+      "video_understanding",
+      "product_search",
+      "price_compare",
+      "image_generation"
+    ],
+    "must_not_call": [
+      "render_3d"
+    ],
+    "suite": "e2e"
+  },
+  {
+    "id": "multistep_003",
+    "category": "multistep",
+    "text": "帮我找同款并比价",
+    "image_ids": [
+      "img_eval_1"
+    ],
+    "expected_intent": "multi_tool_task",
+    "expected_tools": [
+      "vision_understanding",
+      "product_search",
+      "price_compare"
+    ],
+    "must_not_call": [
+      "render_3d"
+    ],
+    "suite": "e2e"
+  },
+  {
+    "id": "multistep_004",
+    "category": "multistep",
+    "text": "搜索这双鞋，价格比较一下，再生成海报",
+    "image_ids": [
+      "img_eval_2"
+    ],
+    "expected_intent": "multi_tool_task",
+    "expected_tools": [
+      "vision_understanding",
+      "product_search",
+      "price_compare",
+      "image_generation"
+    ],
+    "must_not_call": [
+      "render_3d"
+    ],
+    "suite": "e2e"
+  },
+  {
+    "id": "multistep_005",
+    "category": "multistep",
+    "text": "视频里那件商品找相似款，哪个便宜，然后出图",
+    "video_ids": [
+      "video_eval_3"
+    ],
+    "expected_intent": "multi_tool_task",
+    "expected_tools": [
+      "video_understanding",
+      "product_search",
+      "price_compare",
+      "image_generation"
+    ],
+    "must_not_call": [
+      "render_3d"
+    ],
+    "suite": "e2e"
+  },
+  {
+    "id": "multistep_006",
+    "category": "multistep",
+    "text": "图片里的包找一下，看看价格，再生成海报",
+    "image_ids": [
+      "img_eval_3"
+    ],
+    "expected_intent": "multi_tool_task",
+    "expected_tools": [
+      "vision_understanding",
+      "product_search",
+      "price_compare",
+      "image_generation"
+    ],
+    "must_not_call": [
+      "render_3d"
+    ],
+    "suite": "e2e"
+  },
+  {
+    "id": "multistep_007",
+    "category": "multistep",
+    "text": "帮我找一下视频里的鞋，并比较价格，然后生成风格图",
+    "video_ids": [
+      "video_eval_4"
+    ],
+    "expected_intent": "multi_tool_task",
+    "expected_tools": [
+      "video_understanding",
+      "product_search",
+      "price_compare",
+      "image_generation"
+    ],
+    "must_not_call": [
+      "render_3d"
+    ],
+    "suite": "e2e"
+  },
+  {
+    "id": "multistep_008",
+    "category": "multistep",
+    "text": "看图找同款，哪个平台便宜，再换背景",
+    "image_ids": [
+      "img_eval_4"
+    ],
+    "expected_intent": "multi_tool_task",
+    "expected_tools": [
+      "vision_understanding",
+      "product_search",
+      "price_compare",
+      "image_generation"
+    ],
+    "must_not_call": [
+      "render_3d"
+    ],
+    "suite": "e2e"
+  },
+  {
+    "id": "memory_001",
+    "category": "memory",
+    "text": "上次那个黑色包",
+    "expected_intent": "retrieve_memory",
+    "expected_tools": [
+      "memory_retrieval"
+    ],
+    "must_not_call": [
+      "product_search"
+    ],
+    "suite": "routing"
+  },
+  {
+    "id": "memory_002",
+    "category": "memory",
+    "text": "之前我看过的白色鞋",
+    "expected_intent": "retrieve_memory",
+    "expected_tools": [
+      "memory_retrieval"
+    ],
+    "must_not_call": [
+      "image_generation"
+    ],
+    "suite": "routing"
+  },
+  {
+    "id": "memory_003",
+    "category": "memory",
+    "text": "保存偏好：我喜欢低饱和配色",
+    "expected_intent": "save_memory",
+    "expected_tools": [
+      "memory_save"
+    ],
+    "must_not_call": [
+      "product_search"
+    ],
+    "suite": "routing"
+  },
+  {
+    "id": "memory_004",
+    "category": "memory",
+    "text": "帮我记住我喜欢极简海报",
+    "expected_intent": "save_memory",
+    "expected_tools": [
+      "memory_save"
+    ],
+    "must_not_call": [
+      "price_compare"
+    ],
+    "suite": "routing"
+  },
+  {
+    "id": "failure_001",
+    "category": "failure",
+    "text": "那个",
+    "expected_intent": "ask_followup",
+    "expected_tools": [],
+    "must_not_call": [
+      "product_search",
+      "price_compare",
+      "image_generation",
+      "render_3d",
+      "vision_understanding"
+    ],
+    "suite": "routing"
+  },
+  {
+    "id": "failure_002",
+    "category": "failure",
+    "text": "它",
+    "expected_intent": "ask_followup",
+    "expected_tools": [],
+    "must_not_call": [
+      "product_search",
+      "price_compare",
+      "image_generation",
+      "render_3d",
+      "vision_understanding"
+    ],
+    "suite": "routing"
+  },
+  {
+    "id": "failure_003",
+    "category": "failure",
+    "text": null,
+    "image_ids": [
+      "img_eval_empty"
+    ],
+    "expected_intent": "ask_followup",
+    "expected_tools": [],
+    "must_not_call": [
+      "product_search",
+      "price_compare",
+      "image_generation",
+      "render_3d",
+      "vision_understanding"
+    ],
+    "suite": "routing"
+  },
+  {
+    "id": "failure_004",
+    "category": "failure",
+    "text": null,
+    "video_ids": [
+      "video_eval_empty"
+    ],
+    "expected_intent": "ask_followup",
+    "expected_tools": [],
+    "must_not_call": [
+      "product_search",
+      "price_compare",
+      "image_generation",
+      "render_3d",
+      "vision_understanding"
+    ],
+    "suite": "routing"
+  },
+  {
+    "id": "multimodal_001",
+    "category": "multimodal",
+    "text": "图里是什么",
+    "image_ids": [
+      "img_eval_5"
+    ],
+    "expected_intent": "understand_image",
+    "expected_tools": [
+      "vision_understanding"
+    ],
+    "must_not_call": [
+      "product_search",
+      "price_compare"
+    ],
+    "suite": "routing"
+  },
+  {
+    "id": "multimodal_002",
+    "category": "multimodal",
+    "text": "视频里面有什么",
+    "video_ids": [
+      "video_eval_5"
+    ],
+    "expected_intent": "understand_video",
+    "expected_tools": [
+      "video_understanding"
+    ],
+    "must_not_call": [
+      "image_generation",
+      "render_3d"
+    ],
+    "suite": "routing"
+  },
+  {
+    "id": "multimodal_003",
+    "category": "multimodal",
+    "text": "帮我看图，这是什么商品",
+    "image_ids": [
+      "img_eval_6"
+    ],
+    "expected_intent": "understand_image",
+    "expected_tools": [
+      "vision_understanding"
+    ],
+    "must_not_call": [
+      "price_compare",
+      "render_3d"
+    ],
+    "suite": "routing"
+  },
+  {
+    "id": "multimodal_004",
+    "category": "multimodal",
+    "text": "视频发生了什么",
+    "video_ids": [
+      "video_eval_6"
+    ],
+    "expected_intent": "understand_video",
+    "expected_tools": [
+      "video_understanding"
+    ],
+    "must_not_call": [
+      "product_search",
+      "image_generation"
+    ],
+    "suite": "routing"
+  },
+  {
+    "id": "direct_chat_002",
+    "category": "direct_chat",
+    "text": "帮我写一段商品介绍",
+    "expected_intent": "direct_chat",
+    "expected_tools": [],
+    "must_not_call": [
+      "vision_understanding",
+      "product_search",
+      "price_compare",
+      "image_generation",
+      "render_3d"
+    ],
+    "suite": "e2e",
+    "scenario_id": "text_chat",
+    "expected_response_contains": [
+      "商品介绍"
+    ]
+  },
+  {
+    "id": "direct_chat_003",
+    "category": "direct_chat",
+    "text": "给我三个搭配建议",
+    "inputs": {
+      "has_image": true,
+      "has_video": false
+    },
+    "expected_intent": "direct_chat",
+    "expected_tools": [],
+    "must_not_call": [
+      "vision_understanding"
+    ],
+    "suite": "routing"
+  },
+  {
+    "id": "direct_chat_004",
+    "category": "direct_chat",
+    "text": "解释一下 Agent 和 Tool 的区别",
+    "expected_intent": "direct_chat",
+    "expected_tools": [],
+    "must_not_call": [
+      "vision_understanding",
+      "product_search",
+      "price_compare",
+      "image_generation",
+      "render_3d"
+    ],
+    "suite": "routing"
+  },
+  {
+    "id": "direct_chat_005",
+    "category": "direct_chat",
+    "text": "给我三个营销文案方向",
+    "expected_intent": "direct_chat",
+    "expected_tools": [],
+    "must_not_call": [
+      "vision_understanding",
+      "product_search",
+      "price_compare",
+      "image_generation",
+      "render_3d"
+    ],
+    "suite": "routing"
+  },
+  {
+    "id": "text_image_generation_001",
+    "category": "text_only_image_generation",
+    "text": "生成一张赛博朋克风格海报",
+    "expected_intent": "image_generation",
+    "expected_tools": [
+      "image_generation"
+    ],
+    "must_not_require": [
+      "image",
+      "video"
+    ],
+    "suite": "routing"
+  },
+  {
+    "id": "text_image_generation_002",
+    "category": "text_only_image_generation",
+    "text": "帮我生成一张日系极简商品图",
+    "expected_intent": "image_generation",
+    "expected_tools": [
+      "image_generation"
+    ],
+    "must_not_require": [
+      "image",
+      "video"
+    ],
+    "suite": "e2e",
+    "scenario_id": "text_image_generation",
+    "expected_response_contains": [
+      "图片",
+      "生成"
+    ]
+  },
+  {
+    "id": "text_image_generation_003",
+    "category": "text_only_image_generation",
+    "text": "做一张适合小红书的封面",
+    "expected_intent": "image_generation",
+    "expected_tools": [
+      "image_generation"
+    ],
+    "must_not_require": [
+      "image",
+      "video"
+    ],
+    "suite": "routing"
+  },
+  {
+    "id": "text_image_generation_004",
+    "category": "text_only_image_generation",
+    "text": "生成一张未来感科技发布会主视觉",
+    "expected_intent": "image_generation",
+    "expected_tools": [
+      "image_generation"
+    ],
+    "must_not_require": [
+      "image",
+      "video"
+    ],
+    "suite": "routing"
+  },
+  {
+    "id": "text_product_search_001",
+    "category": "text_only_product_search",
+    "text": "帮我找 500 元以内的白色运动鞋",
+    "expected_intent": "product_search",
+    "expected_tools": [
+      "product_search"
+    ],
+    "must_not_call": [
+      "vision_understanding"
+    ],
+    "suite": "e2e",
+    "scenario_id": "product_search_compare",
+    "expected_response_contains": [
+      "商品"
+    ]
+  },
+  {
+    "id": "text_product_search_002",
+    "category": "text_only_product_search",
+    "text": "搜索 300 元以内的白色板鞋",
+    "expected_intent": "product_search",
+    "expected_tools": [
+      "product_search"
+    ],
+    "must_not_call": [
+      "vision_understanding",
+      "price_compare"
+    ],
+    "suite": "routing"
+  },
+  {
+    "id": "text_product_search_003",
+    "category": "text_only_product_search",
+    "text": "帮我找日系白色休闲鞋",
+    "expected_intent": "product_search",
+    "expected_tools": [
+      "product_search"
+    ],
+    "must_not_call": [
+      "vision_understanding",
+      "price_compare"
+    ],
+    "suite": "routing"
+  },
+  {
+    "id": "text_price_compare_001",
+    "category": "text_only_price_compare",
+    "text": "比较一下 iPhone 15 和 iPhone 16 的价格",
+    "expected_intent": "price_compare",
+    "expected_tools": [
+      "price_compare"
+    ],
+    "must_not_call": [
+      "vision_understanding",
+      "image_generation"
+    ],
+    "suite": "routing"
+  },
+  {
+    "id": "text_price_compare_002",
+    "category": "text_only_price_compare",
+    "text": "哪个平台更便宜",
+    "expected_intent": "price_compare",
+    "expected_tools": [
+      "price_compare"
+    ],
+    "must_not_call": [
+      "vision_understanding",
+      "product_search"
+    ],
+    "suite": "routing"
+  },
+  {
+    "id": "text_price_compare_003",
+    "category": "text_only_price_compare",
+    "text": "比较价格，预算 300 元",
+    "expected_intent": "price_compare",
+    "expected_tools": [
+      "price_compare"
+    ],
+    "must_not_call": [
+      "vision_understanding",
+      "image_generation"
+    ],
+    "suite": "routing"
+  },
+  {
+    "id": "text_render_001",
+    "category": "text_only_render",
+    "text": "把浅灰色沙发放到北欧风客厅看看",
+    "expected_intent": "render_3d",
+    "expected_tools": [
+      "render_3d"
+    ],
+    "must_not_call": [
+      "vision_understanding",
+      "image_generation"
+    ],
+    "suite": "routing"
+  },
+  {
+    "id": "image_understanding_001",
+    "category": "image_understanding",
+    "text": "看看图里有什么",
+    "inputs": {
+      "has_image": true,
+      "has_video": false
+    },
+    "expected_intent": "image_understanding",
+    "expected_tools": [
+      "vision_understanding"
+    ],
+    "must_not_call": [
+      "product_search",
+      "price_compare"
+    ],
+    "suite": "routing"
+  },
+  {
+    "id": "media_search_001",
+    "category": "media_plus_search",
+    "text": "找这张图里的鞋子",
+    "inputs": {
+      "has_image": true,
+      "has_video": false
+    },
+    "expected_intent": "multi_step_orchestration",
+    "expected_tools": [
+      "vision_understanding",
+      "product_search"
+    ],
+    "must_not_call": [
+      "price_compare",
+      "image_generation"
+    ],
+    "suite": "routing"
+  },
+  {
+    "id": "video_understanding_001",
+    "category": "video_understanding",
+    "text": "总结这个视频",
+    "inputs": {
+      "has_image": false,
+      "has_video": true
+    },
+    "expected_intent": "video_understanding",
+    "expected_tools": [
+      "video_understanding"
+    ],
+    "must_not_call": [
+      "product_search",
+      "image_generation"
+    ],
+    "suite": "routing"
+  },
+  {
+    "id": "media_generation_001",
+    "category": "media_plus_generation",
+    "text": "用这张图生成一张电商海报",
+    "inputs": {
+      "has_image": true,
+      "has_video": false
+    },
+    "expected_intent": "multi_step_orchestration",
+    "expected_tools": [
+      "vision_understanding",
+      "image_generation"
+    ],
+    "must_not_call": [
+      "product_search",
+      "price_compare"
+    ],
+    "suite": "routing"
+  },
+  {
+    "id": "media_search_compare_001",
+    "category": "media_plus_search_compare",
+    "text": "找这张图里的鞋子，比较价格",
+    "inputs": {
+      "has_image": true,
+      "has_video": false
+    },
+    "expected_intent": "multi_step_orchestration",
+    "expected_tools": [
+      "vision_understanding",
+      "product_search",
+      "price_compare"
+    ],
+    "must_not_call": [
+      "image_generation",
+      "render_3d"
+    ],
+    "suite": "e2e",
+    "scenario_id": "image_to_product_search_compare",
+    "expected_response_contains": [
+      "图片",
+      "价格"
+    ]
+  },
+  {
+    "id": "media_video_search_001",
+    "category": "media_plus_search",
+    "text": "找这个视频里的商品",
+    "inputs": {
+      "has_image": false,
+      "has_video": true
+    },
+    "expected_intent": "multi_step_orchestration",
+    "expected_tools": [
+      "video_understanding",
+      "product_search"
+    ],
+    "must_not_call": [
+      "price_compare",
+      "image_generation"
+    ],
+    "suite": "routing"
+  },
+  {
+    "id": "memory_retrieval_001",
+    "category": "memory_retrieval",
+    "text": "上次那个黑色包还在吗",
+    "expected_intent": "memory_retrieval",
+    "expected_tools": [
+      "memory_retrieval"
+    ],
+    "must_not_call": [
+      "vision_understanding",
+      "product_search"
+    ],
+    "suite": "routing"
+  },
+  {
+    "id": "multi_step_orchestration_001",
+    "category": "multi_step_orchestration",
+    "text": "根据上次那个包，生成一张宣传图",
+    "expected_intent": "multi_step_orchestration",
+    "expected_tools": [
+      "memory_retrieval",
+      "image_generation"
+    ],
+    "must_not_call": [
+      "vision_understanding",
+      "product_search"
+    ],
+    "suite": "e2e",
+    "scenario_id": "memory_to_image_generation",
+    "expected_response_contains": [
+      "图片"
+    ]
+  },
+  {
+    "id": "search_compare_text_001",
+    "category": "product_search_price_compare",
+    "text": "帮我找 500 元以内的白鞋，再比较价格",
+    "expected_intent": "multi_step_orchestration",
+    "expected_tools": [
+      "product_search",
+      "price_compare"
+    ],
+    "must_not_call": [
+      "vision_understanding",
+      "image_generation"
+    ],
+    "suite": "e2e"
+  },
+  {
+    "id": "search_compare_text_002",
+    "category": "product_search_price_compare",
+    "text": "搜索白色运动鞋，然后比较价格",
+    "expected_intent": "multi_step_orchestration",
+    "expected_tools": [
+      "product_search",
+      "price_compare"
+    ],
+    "must_not_call": [
+      "vision_understanding",
+      "image_generation"
+    ],
+    "suite": "e2e"
+  },
+  {
+    "id": "ambiguous_followup_001",
+    "category": "ambiguous_followup",
+    "text": "看看图里有什么",
+    "expected_intent": "ask_followup",
+    "expected_tools": [],
+    "must_not_call": [
+      "vision_understanding",
+      "product_search",
+      "price_compare",
+      "image_generation",
+      "render_3d"
+    ],
+    "suite": "routing"
+  },
+  {
+    "id": "ambiguous_followup_002",
+    "category": "ambiguous_followup",
+    "text": "这个",
+    "inputs": {
+      "has_image": true,
+      "has_video": false
+    },
+    "expected_intent": "ask_followup",
+    "expected_tools": [],
+    "must_not_call": [
+      "vision_understanding",
+      "product_search",
+      "price_compare",
+      "image_generation",
+      "render_3d"
+    ],
+    "suite": "routing"
+  },
+  {
+    "id": "text_only_render",
+    "category": "render_3d",
+    "text": "把一把浅灰色沙发放到北欧风客厅里看看",
+    "expected_intent": "render_3d",
+    "expected_tools": [
+      "render_3d"
+    ],
+    "must_not_call": [
+      "product_search",
+      "price_compare",
+      "image_generation",
+      "vision_understanding"
+    ],
+    "suite": "routing"
+  },
+  {
+    "id": "product_search_to_render",
+    "category": "render_3d",
+    "text": "帮我找一款黑色办公椅，然后放到现代办公室里看看",
+    "expected_intent": "multi_step_orchestration",
+    "expected_tools": [
+      "product_search",
+      "render_3d"
+    ],
+    "must_not_call": [
+      "price_compare",
+      "image_generation"
+    ],
+    "suite": "e2e",
+    "scenario_id": "product_search_to_render",
+    "expected_response_contains": [
+      "3D"
+    ]
+  },
+  {
+    "id": "image_understanding_to_render",
+    "category": "render_3d",
+    "text": "把图里的这个商品放到卧室里渲染一下",
+    "inputs": {
+      "has_image": true,
+      "has_video": false
+    },
+    "expected_intent": "multi_step_orchestration",
+    "expected_tools": [
+      "vision_understanding",
+      "render_3d"
+    ],
+    "must_not_call": [
+      "product_search",
+      "price_compare",
+      "image_generation"
+    ],
+    "suite": "e2e"
+  },
+  {
+    "id": "video_understanding_to_render",
+    "category": "render_3d",
+    "text": "把视频里的商品做一个展厅 3D 展示",
+    "inputs": {
+      "has_image": false,
+      "has_video": true
+    },
+    "expected_intent": "multi_step_orchestration",
+    "expected_tools": [
+      "video_understanding",
+      "render_3d"
+    ],
+    "must_not_call": [
+      "product_search",
+      "price_compare",
+      "image_generation"
+    ],
+    "suite": "e2e"
+  },
+  {
+    "id": "memory_to_render",
+    "category": "render_3d",
+    "text": "把上次那个黑色包放到极简客厅里看看",
+    "expected_intent": "multi_step_orchestration",
+    "expected_tools": [
+      "memory_retrieval",
+      "render_3d"
+    ],
+    "must_not_call": [
+      "product_search",
+      "price_compare",
+      "image_generation",
+      "vision_understanding"
+    ],
+    "suite": "e2e"
+  },
+  {
+    "id": "router_ambiguous_sales_001",
+    "category": "router_comparison",
+    "suite": "routing",
+    "text": "帮我把这个东西弄得更适合卖",
+    "expected_intent": "direct_chat",
+    "expected_tools": [],
+    "router_expectations": {
+      "mock_llm": {
+        "expected_intent": "multi_step_orchestration",
+        "expected_tools": [
+          "product_search",
+          "image_generation"
+        ]
+      },
+      "hybrid": {
+        "expected_intent": "multi_step_orchestration",
+        "expected_tools": [
+          "product_search",
+          "image_generation"
+        ]
+      }
+    }
+  },
+  {
+    "id": "router_ambiguous_sales_002",
+    "category": "router_comparison",
+    "suite": "routing",
+    "text": "帮我处理一下这个商品，让它更有吸引力",
+    "expected_intent": "direct_chat",
+    "expected_tools": [],
+    "router_expectations": {
+      "mock_llm": {
+        "expected_intent": "ask_followup",
+        "expected_tools": []
+      },
+      "hybrid": {
+        "expected_intent": "ask_followup",
+        "expected_tools": []
+      }
+    }
+  },
+  {
+    "id": "router_multiturn_price_image_001",
+    "category": "router_comparison",
+    "suite": "routing",
+    "text": "看看这个有没有便宜点的，顺便做个图",
+    "expected_intent": "price_compare",
+    "expected_tools": [
+      "price_compare"
+    ],
+    "router_expectations": {
+      "mock_llm": {
+        "expected_intent": "ask_followup",
+        "expected_tools": []
+      },
+      "hybrid": {
+        "expected_intent": "multi_step_orchestration",
+        "expected_tools": [
+          "product_search",
+          "price_compare"
+        ]
+      }
+    }
+  },
+  {
+    "id": "router_memory_render_001",
+    "category": "router_comparison",
+    "suite": "routing",
+    "text": "按我之前喜欢的风格，给这个做个展示",
+    "expected_intent": "memory_retrieval",
+    "expected_tools": [
+      "memory_retrieval"
+    ],
+    "router_expectations": {
+      "mock_llm": {
+        "expected_intent": "ask_followup",
+        "expected_tools": []
+      },
+      "hybrid": {
+        "expected_intent": "memory_retrieval",
+        "expected_tools": [
+          "memory_retrieval"
+        ]
+      }
+    }
+  },
+  {
+    "id": "router_missing_image_001",
+    "category": "router_comparison",
+    "suite": "routing",
+    "text": "看看图里有什么",
+    "expected_intent": "ask_followup",
+    "expected_tools": [],
+    "router_expectations": {
+      "mock_llm": {
+        "expected_intent": "ask_followup",
+        "expected_tools": []
+      },
+      "hybrid": {
+        "expected_intent": "ask_followup",
+        "expected_tools": []
+      }
+    }
+  },
+  {
+    "id": "video_to_price_compare_001",
+    "category": "video_understanding",
+    "suite": "e2e",
+    "text": "找视频里的商品并比较价格",
+    "inputs": {
+      "has_image": false,
+      "has_video": true
+    },
+    "expected_intent": "multi_step_orchestration",
+    "expected_tools": [
+      "video_understanding",
+      "product_search",
+      "price_compare"
+    ],
+    "must_not_call": [
+      "image_generation",
+      "render_3d"
+    ],
+    "expected_response_contains": [
+      "视频",
+      "价格"
+    ]
+  },
+  {
+    "id": "video_to_image_generation_001",
+    "category": "video_understanding",
+    "suite": "e2e",
+    "text": "根据这个视频里的商品生成一张宣传海报",
+    "inputs": {
+      "has_image": false,
+      "has_video": true
+    },
+    "expected_intent": "multi_step_orchestration",
+    "expected_tools": [
+      "video_understanding",
+      "image_generation"
+    ],
+    "must_not_call": [
+      "product_search",
+      "price_compare",
+      "render_3d"
+    ],
+    "expected_response_contains": [
+      "视频",
+      "图片"
+    ]
+  },
+  {
+    "id": "video_to_memory_save_001",
+    "category": "video_understanding",
+    "suite": "e2e",
+    "text": "记住这个视频里的商品风格",
+    "inputs": {
+      "has_image": false,
+      "has_video": true
+    },
+    "expected_intent": "multi_step_orchestration",
+    "expected_tools": [
+      "video_understanding",
+      "memory_save"
+    ],
+    "must_not_call": [
+      "product_search",
+      "price_compare",
+      "image_generation",
+      "render_3d"
+    ],
+    "expected_response_contains": [
+      "视频",
+      "记忆"
+    ]
+  },
+  {
+    "id": "video_missing_input_followup_001",
+    "category": "video_understanding",
+    "suite": "routing",
+    "text": "总结这个视频",
+    "inputs": {
+      "has_image": false,
+      "has_video": false
+    },
+    "expected_intent": "ask_followup",
+    "expected_tools": [],
+    "must_not_call": [
+      "video_understanding",
+      "vision_understanding",
+      "product_search",
+      "price_compare",
+      "image_generation"
+    ],
+    "must_not_require": [
+      "image"
+    ]
+  },
+  {
+    "id": "video_present_but_text_chat_001",
+    "category": "video_understanding",
+    "suite": "routing",
+    "text": "帮我写一段商品介绍",
+    "inputs": {
+      "has_image": false,
+      "has_video": true
+    },
+    "expected_intent": "direct_chat",
+    "expected_tools": [],
+    "must_not_call": [
+      "video_understanding",
+      "vision_understanding",
+      "product_search",
+      "price_compare",
+      "image_generation"
+    ]
+  },
+  {
+    "id": "provider_safety_timeout_001",
+    "category": "provider_safety",
+    "suite": "provider_safety",
+    "safety_scenario": "provider_timeout",
+    "expected_error_code": "provider_timeout",
+    "expected_intent": "provider_safety",
+    "expected_capability": "provider_safety",
+    "expected_tools": [],
+    "must_not_call": []
+  },
+  {
+    "id": "provider_safety_bad_response_001",
+    "category": "provider_safety",
+    "suite": "provider_safety",
+    "safety_scenario": "provider_bad_response",
+    "expected_error_code": "provider_bad_response",
+    "expected_intent": "provider_safety",
+    "expected_capability": "provider_safety",
+    "expected_tools": [],
+    "must_not_call": []
+  },
+  {
+    "id": "provider_safety_unconfigured_001",
+    "category": "provider_safety",
+    "suite": "provider_safety",
+    "safety_scenario": "provider_unconfigured",
+    "expected_error_code": "provider_unconfigured",
+    "expected_intent": "provider_safety",
+    "expected_capability": "provider_safety",
+    "expected_tools": [],
+    "must_not_call": []
+  },
+  {
+    "id": "provider_safety_budget_exceeded_001",
+    "category": "provider_safety",
+    "suite": "provider_safety",
+    "safety_scenario": "provider_budget_exceeded",
+    "expected_error_code": "provider_call_limit_exceeded",
+    "expected_intent": "provider_safety",
+    "expected_capability": "provider_safety",
+    "expected_tools": [],
+    "must_not_call": []
+  },
+  {
+    "id": "provider_safety_rate_limited_001",
+    "category": "provider_safety",
+    "suite": "provider_safety",
+    "safety_scenario": "provider_rate_limited",
+    "expected_error_code": "provider_rate_limited",
+    "expected_intent": "provider_safety",
+    "expected_capability": "provider_safety",
+    "expected_tools": [],
+    "must_not_call": []
+  },
+  {
+    "id": "memory_preference_to_image_generation_001",
+    "category": "memory",
+    "suite": "memory",
+    "scenario_id": "memory_preference_to_image_generation",
+    "text": "根据上次那个包，按我喜欢的风格生成一张宣传图",
+    "expected_intent": "multi_step_orchestration",
+    "expected_tools": [
+      "memory_retrieval",
+      "image_generation"
+    ],
+    "expected_response_contains": [
+      "图片"
+    ],
+    "must_not_call": [
+      "vision_understanding",
+      "video_understanding",
+      "product_search",
+      "price_compare"
+    ]
+  },
+  {
+    "id": "memory_product_to_render_001",
+    "category": "memory",
+    "suite": "memory",
+    "scenario_id": "memory_product_to_render",
+    "text": "把上次那个包放到客厅里渲染",
+    "expected_intent": "multi_step_orchestration",
+    "expected_tools": [
+      "memory_retrieval",
+      "render_3d"
+    ],
+    "expected_response_contains": [
+      "渲染"
+    ],
+    "must_not_call": [
+      "vision_understanding",
+      "video_understanding",
+      "product_search",
+      "price_compare",
+      "image_generation"
+    ]
+  },
+  {
+    "id": "memory_task_resume_001",
+    "category": "memory",
+    "suite": "memory",
+    "scenario_id": "memory_task_resume",
+    "text": "继续上次任务",
+    "expected_intent": "memory_retrieval",
+    "expected_tools": [
+      "memory_retrieval"
+    ],
+    "expected_response_contains": [
+      "记忆"
+    ],
+    "must_not_call": [
+      "vision_understanding",
+      "video_understanding",
+      "product_search",
+      "price_compare",
+      "image_generation",
+      "render_3d"
+    ]
+  },
+  {
+    "id": "memory_retrieval_black_bag_style_001",
+    "category": "memory_retrieval_eval",
+    "suite": "memory",
+    "scenario_id": "memory_retrieval_black_bag_style",
+    "memory_scenario": "retrieval_eval",
+    "expected_intent": "memory_retrieval_eval",
+    "expected_tools": [],
+    "memory_retrieval_eval": {
+      "query": "上次那个黑色包是什么风格？",
+      "expected_memory_ids": [
+        "product_black_commute_bag"
+      ],
+      "fixtures": [
+        {
+          "memory_id": "product_black_commute_bag",
+          "memory_type": "product",
+          "summary": "用户上次关注了一个黑色通勤包，风格是简约商务。",
+          "created_at": "2026-01-02T00:00:00+00:00"
+        },
+        {
+          "memory_id": "pref_light_style",
+          "memory_type": "preference",
+          "summary": "用户喜欢浅色日系风格。",
+          "created_at": "2026-01-01T00:00:00+00:00"
+        }
+      ]
+    }
+  },
+  {
+    "id": "memory_retrieval_color_preference_001",
+    "category": "memory_retrieval_eval",
+    "suite": "memory",
+    "scenario_id": "memory_retrieval_color_preference",
+    "memory_scenario": "retrieval_eval",
+    "expected_intent": "memory_retrieval_eval",
+    "expected_tools": [],
+    "memory_retrieval_eval": {
+      "query": "我之前喜欢什么配色？",
+      "expected_memory_ids": [
+        "pref_color_light"
+      ],
+      "fixtures": [
+        {
+          "memory_id": "pref_color_light",
+          "memory_type": "preference",
+          "summary": "用户之前说喜欢浅色、米白和低饱和配色。",
+          "created_at": "2026-01-02T00:00:00+00:00"
+        },
+        {
+          "memory_id": "product_black_commute_bag",
+          "memory_type": "product",
+          "summary": "用户上次关注了一个黑色通勤包。",
+          "created_at": "2026-01-01T00:00:00+00:00"
+        }
+      ]
+    }
+  },
+  {
+    "id": "memory_retrieval_living_room_product_001",
+    "category": "memory_retrieval_eval",
+    "suite": "memory",
+    "scenario_id": "memory_retrieval_living_room_product",
+    "memory_scenario": "retrieval_eval",
+    "expected_intent": "memory_retrieval_eval",
+    "expected_tools": [],
+    "memory_retrieval_eval": {
+      "query": "刚才让我放到客厅的是哪个商品？",
+      "expected_memory_ids": [
+        "task_living_room_chair"
+      ],
+      "fixtures": [
+        {
+          "memory_id": "task_living_room_chair",
+          "memory_type": "task",
+          "summary": "刚才用户让我把米白色单人椅商品放到客厅里渲染。",
+          "created_at": "2026-01-02T00:00:00+00:00"
+        },
+        {
+          "memory_id": "task_old_shoe",
+          "memory_type": "task",
+          "summary": "之前用户搜索过白色运动鞋。",
+          "created_at": "2026-01-01T00:00:00+00:00"
+        }
+      ]
+    }
+  },
+  {
+    "id": "memory_retrieval_budget_001",
+    "category": "memory_retrieval_eval",
+    "suite": "memory",
+    "scenario_id": "memory_retrieval_budget",
+    "memory_scenario": "retrieval_eval",
+    "expected_intent": "memory_retrieval_eval",
+    "expected_tools": [],
+    "memory_retrieval_eval": {
+      "query": "我预算是多少？",
+      "expected_memory_ids": [
+        "pref_budget_500"
+      ],
+      "fixtures": [
+        {
+          "memory_id": "pref_budget_500",
+          "memory_type": "preference",
+          "summary": "用户预算是 500 元以内，优先性价比。",
+          "created_at": "2026-01-02T00:00:00+00:00"
+        },
+        {
+          "memory_id": "pref_color_light",
+          "memory_type": "preference",
+          "summary": "用户喜欢浅色低饱和配色。",
+          "created_at": "2026-01-01T00:00:00+00:00"
+        }
+      ]
+    }
+  },
+  {
+    "id": "memory_retrieval_unrelated_empty_001",
+    "category": "memory_retrieval_eval",
+    "suite": "memory",
+    "scenario_id": "memory_retrieval_unrelated_empty",
+    "memory_scenario": "retrieval_eval",
+    "expected_intent": "memory_retrieval_eval",
+    "expected_tools": [],
+    "memory_retrieval_eval": {
+      "query": "玉桂狗联名杯子",
+      "expected_empty": true,
+      "fixtures": [
+        {
+          "memory_id": "product_black_commute_bag",
+          "memory_type": "product",
+          "summary": "用户上次关注了一个黑色通勤包。",
+          "created_at": "2026-01-01T00:00:00+00:00"
+        }
+      ]
+    }
+  },
+  {
+    "id": "memory_retrieval_cross_user_isolation_001",
+    "category": "memory_retrieval_eval",
+    "suite": "memory",
+    "scenario_id": "memory_retrieval_cross_user_isolation",
+    "memory_scenario": "retrieval_eval",
+    "expected_intent": "memory_retrieval_eval",
+    "expected_tools": [],
+    "memory_retrieval_eval": {
+      "query": "浅色日系",
+      "user_id": "user_b",
+      "expected_empty": true,
+      "forbidden_memory_ids": [
+        "cross_user_pref"
+      ],
+      "fixtures": [
+        {
+          "memory_id": "cross_user_pref",
+          "user_id": "user_a",
+          "memory_type": "preference",
+          "summary": "用户 A 喜欢浅色日系风格。",
+          "created_at": "2026-01-01T00:00:00+00:00"
+        }
+      ]
+    }
+  },
+  {
+    "id": "memory_retrieval_expired_exclusion_001",
+    "category": "memory_retrieval_eval",
+    "suite": "memory",
+    "scenario_id": "memory_retrieval_expired_exclusion",
+    "memory_scenario": "retrieval_eval",
+    "expected_intent": "memory_retrieval_eval",
+    "expected_tools": [],
+    "memory_retrieval_eval": {
+      "query": "过期预算",
+      "expected_empty": true,
+      "forbidden_memory_ids": [
+        "expired_budget"
+      ],
+      "fixtures": [
+        {
+          "memory_id": "expired_budget",
+          "memory_type": "preference",
+          "summary": "过期预算是 300 元。",
+          "created_at": "2020-01-01T00:00:00+00:00",
+          "expires_at": "2020-01-02T00:00:00+00:00"
+        }
+      ]
+    }
+  },
+  {
+    "id": "memory_retrieval_sensitive_not_injected_001",
+    "category": "memory_retrieval_eval",
+    "suite": "memory",
+    "scenario_id": "memory_retrieval_sensitive_not_injected",
+    "memory_scenario": "retrieval_eval",
+    "expected_intent": "memory_retrieval_eval",
+    "expected_tools": [],
+    "memory_retrieval_eval": {
+      "query": "预算",
+      "expected_memory_ids": [
+        "safe_budget"
+      ],
+      "expected_injected_ids": [
+        "safe_budget"
+      ],
+      "forbidden_injected_ids": [
+        "sensitive_budget"
+      ],
+      "fixtures": [
+        {
+          "memory_id": "safe_budget",
+          "memory_type": "preference",
+          "summary": "用户预算是 500 元以内。",
+          "created_at": "2026-01-02T00:00:00+00:00"
+        },
+        {
+          "memory_id": "sensitive_budget",
+          "memory_type": "preference",
+          "summary": "用户预算包含敏感付款信息。",
+          "sensitivity": "sensitive",
+          "created_at": "2026-01-01T00:00:00+00:00"
+        }
+      ]
+    }
+  },
+  {
+    "id": "memory_retrieval_token_budget_001",
+    "category": "memory_retrieval_eval",
+    "suite": "memory",
+    "scenario_id": "memory_retrieval_token_budget",
+    "memory_scenario": "retrieval_eval",
+    "expected_intent": "memory_retrieval_eval",
+    "expected_tools": [],
+    "memory_retrieval_eval": {
+      "query": "浅色",
+      "max_context_chars": 1000,
+      "max_context_tokens": 28,
+      "expected_memory_ids": [
+        "token_small"
+      ],
+      "expected_injected_ids": [
+        "token_small"
+      ],
+      "forbidden_injected_ids": [
+        "token_large"
+      ],
+      "fixtures": [
+        {
+          "memory_id": "token_small",
+          "memory_type": "preference",
+          "summary": "用户喜欢浅色。",
+          "created_at": "2026-01-02T00:00:00+00:00"
+        },
+        {
+          "memory_id": "token_large",
+          "memory_type": "preference",
+          "summary": "用户喜欢非常详细的日系极简浅色背景。用户喜欢非常详细的日系极简浅色背景。用户喜欢非常详细的日系极简浅色背景。用户喜欢非常详细的日系极简浅色背景。",
+          "created_at": "2026-01-01T00:00:00+00:00"
+        }
+      ]
+    }
+  },
+  {
+    "id": "memory_retrieval_superseded_preference_001",
+    "category": "memory_retrieval_eval",
+    "suite": "memory",
+    "scenario_id": "memory_retrieval_superseded_preference",
+    "memory_scenario": "retrieval_eval",
+    "expected_intent": "memory_retrieval_eval",
+    "expected_tools": [],
+    "memory_retrieval_eval": {
+      "query": "风格",
+      "expected_memory_ids": [
+        "style_new"
+      ],
+      "expected_injected_ids": [
+        "style_new"
+      ],
+      "expected_profile_source_memory_ids": [
+        "style_new"
+      ],
+      "expected_profile_conflict_count": 1,
+      "forbidden_memory_ids": [
+        "style_old"
+      ],
+      "forbidden_injected_ids": [
+        "style_old"
+      ],
+      "forbidden_profile_source_memory_ids": [
+        "style_old"
+      ],
+      "explicit_saves": [
+        {
+          "memory_id": "style_old",
+          "text": "记住我喜欢浅色日系风格",
+          "content": {
+            "preference_key": "style",
+            "style": "浅色日系",
+            "summary": "用户喜欢浅色日系风格。"
+          },
+          "created_at": "2026-01-01T00:00:00+00:00"
+        },
+        {
+          "memory_id": "style_new",
+          "text": "记住我现在喜欢深色极简风格",
+          "content": {
+            "preference_key": "style",
+            "style": "深色极简",
+            "summary": "用户喜欢深色极简风格。"
+          },
+          "created_at": "2026-01-02T00:00:00+00:00"
+        }
+      ]
+    }
+  },
+  {
+    "id": "memory_user_isolation_001",
+    "category": "memory",
+    "suite": "memory",
+    "scenario_id": "memory_user_isolation",
+    "memory_scenario": "user_isolation",
+    "expected_intent": "memory_retrieval",
+    "expected_tools": []
+  },
+  {
+    "id": "memory_delete_user_scoped_001",
+    "category": "memory",
+    "suite": "memory",
+    "scenario_id": "memory_delete",
+    "memory_scenario": "delete_user_scoped",
+    "expected_intent": "memory_delete",
+    "expected_tools": []
+  },
+  {
+    "id": "packaging_mcp_tool_inventory_001",
+    "category": "packaging",
+    "suite": "packaging",
+    "scenario_id": "mcp_tool_inventory",
+    "packaging_scenario": "mcp_tool_inventory",
+    "expected_intent": "packaging",
+    "expected_capability": "packaging",
+    "expected_tools": []
+  },
+  {
+    "id": "packaging_mcp_smoke_redaction_001",
+    "category": "packaging",
+    "suite": "packaging",
+    "scenario_id": "mcp_smoke_redaction",
+    "packaging_scenario": "mcp_smoke_redaction",
+    "expected_intent": "packaging",
+    "expected_capability": "packaging",
+    "expected_tools": []
+  },
+  {
+    "id": "routing_scene_description_image_001",
+    "category": "routing",
+    "suite": "routing",
+    "text": "图里是什么？请简要描述主要物体、颜色、材质和场景。",
+    "image_ids": [
+      "img1"
+    ],
+    "expected_intent": "image_understanding",
+    "expected_tools": [
+      "vision_understanding"
+    ],
+    "must_not_call": [
+      "render_3d"
+    ]
+  },
+  {
+    "id": "routing_scene_description_image_002",
+    "category": "routing",
+    "suite": "routing",
+    "text": "请描述这张图片的场景。",
+    "image_ids": [
+      "img1"
+    ],
+    "expected_intent": "image_understanding",
+    "expected_tools": [
+      "vision_understanding"
+    ],
+    "must_not_call": [
+      "render_3d"
+    ]
+  },
+  {
+    "id": "routing_scene_description_video_001",
+    "category": "routing",
+    "suite": "routing",
+    "text": "这个视频里的场景发生了什么？",
+    "video_ids": [
+      "video1"
+    ],
+    "expected_intent": "video_understanding",
+    "expected_tools": [
+      "video_understanding"
+    ],
+    "must_not_call": [
+      "render_3d"
+    ]
+  },
+  {
+    "id": "routing_scene_description_image_003",
+    "category": "routing",
+    "suite": "routing",
+    "text": "画面中的主要场景是什么？",
+    "image_ids": [
+      "img1"
+    ],
+    "expected_intent": "image_understanding",
+    "expected_tools": [
+      "vision_understanding"
+    ],
+    "must_not_call": [
+      "render_3d"
+    ]
+  },
+  {
+    "id": "routing_scene_description_image_004",
+    "category": "routing",
+    "suite": "routing",
+    "text": "分析一下图片中的物体和场景。",
+    "image_ids": [
+      "img1"
+    ],
+    "expected_intent": "image_understanding",
+    "expected_tools": [
+      "vision_understanding"
+    ],
+    "must_not_call": [
+      "render_3d"
+    ]
+  },
+  {
+    "id": "routing_render_strong_image_001",
+    "category": "routing",
+    "suite": "routing",
+    "text": "根据这张图创建一个 3D 场景预览。",
+    "image_ids": [
+      "img1"
+    ],
+    "expected_intent": "multi_step_orchestration",
+    "expected_tools": [
+      "vision_understanding",
+      "render_3d"
+    ]
+  },
+  {
+    "id": "routing_render_strong_001",
+    "category": "routing",
+    "suite": "routing",
+    "text": "把这个商品放进一个客厅场景里渲染。",
+    "expected_intent": "render_3d",
+    "expected_tools": [
+      "render_3d"
+    ]
+  },
+  {
+    "id": "routing_render_strong_002",
+    "category": "routing",
+    "suite": "routing",
+    "text": "生成一个三维商品展示场景。",
+    "expected_intent": "render_3d",
+    "expected_tools": [
+      "render_3d"
+    ]
+  },
+  {
+    "id": "routing_render_strong_003",
+    "category": "routing",
+    "suite": "routing",
+    "text": "请用 3D 方式建模这个场景。",
+    "expected_intent": "render_3d",
+    "expected_tools": [
+      "render_3d"
+    ]
+  },
+  {
+    "id": "routing_render_strong_004",
+    "category": "routing",
+    "suite": "routing",
+    "text": "渲染一个包含这个商品的展示空间。",
+    "expected_intent": "render_3d",
+    "expected_tools": [
+      "render_3d"
+    ]
+  },
+  {
+    "id": "plan_mode_react_default_001",
+    "category": "plan_mode",
+    "suite": "plan_mode",
+    "scenario_id": "react_default_contract",
+    "text": "你好，直接回复即可。",
+    "execution_strategy": "react",
+    "expected_intent": "direct_chat",
+    "expected_capability": "direct_chat",
+    "expected_tools": [],
+    "expected_response_contains": [
+      "react plan-mode baseline ok"
+    ],
+    "must_not_call": [
+      "product_search",
+      "price_compare",
+      "image_generation",
+      "render_3d"
+    ],
+    "expected_decision_types": [
+      "final_answer"
+    ],
+    "expected_trace_nodes": [
+      "assistant"
+    ],
+    "expected_chat_calls": 1,
+    "scripted_chat_outputs": [
+      {
+        "type": "final_answer",
+        "message": "react plan-mode baseline ok",
+        "reason": "direct answer is enough"
+      }
+    ]
+  },
+  {
+    "id": "plan_mode_multistep_tool_loop_001",
+    "category": "plan_mode",
+    "suite": "plan_mode",
+    "scenario_id": "plan_mode_multistep_contract",
+    "text": "找一款白色运动鞋，再生成一张海报。",
+    "execution_strategy": "react",
+    "expected_intent": "multi_step_orchestration",
+    "expected_capability": "multi_step_orchestration",
+    "expected_tools": [
+      "product_search",
+      "image_generation"
+    ],
+    "expected_response_contains": [
+      "海报"
+    ],
+    "expected_plan_status": "completed",
+    "expected_final_answer_source": "assistant_loop",
+    "expected_plan_revision_count": 0,
+    "expected_decision_types": [
+      "enter_plan_mode",
+      "tool_call",
+      "exit_plan_mode"
+    ],
+    "expected_observation_tools": [
+      "product_search",
+      "image_generation"
+    ],
+    "expected_trace_nodes": [
+      "assistant",
+      "apply_plan_mode_transition",
+      "execute_tool"
+    ],
+    "expected_chat_calls": 4,
+    "scripted_chat_outputs": [
+      {
+        "type": "enter_plan_mode",
+        "plan": {
+          "goal": "搜索白色运动鞋并生成海报",
+          "steps": [
+            {
+              "step_id": "step_1",
+              "action": "search_product",
+              "tool_name": "product_search",
+              "input_refs": [],
+              "depends_on": [],
+              "required_inputs": [
+                "query"
+              ],
+              "optional": false,
+              "reason": "先拿到商品候选"
+            },
+            {
+              "step_id": "step_2",
+              "action": "generate_image",
+              "tool_name": "image_generation",
+              "input_refs": [
+                "step_1"
+              ],
+              "depends_on": [
+                "step_1"
+              ],
+              "required_inputs": [
+                "prompt"
+              ],
+              "optional": false,
+              "reason": "基于搜索目标生成海报"
+            }
+          ]
+        },
+        "reason": "需要多步工具计划"
+      },
+      {
+        "type": "tool_call",
+        "step_id": "step_1",
+        "tool_name": "product_search",
+        "tool_input": {
+          "query": "白色低帮运动鞋",
+          "top_k": 3
+        },
+        "reason": "先执行商品搜索"
+      },
+      {
+        "type": "tool_call",
+        "step_id": "step_2",
+        "tool_name": "image_generation",
+        "tool_input": {
+          "prompt": "为白色低帮运动鞋生成一张简洁商品海报",
+          "product_title": "白色低帮运动鞋"
+        },
+        "reason": "搜索完成后生成海报"
+      },
+      {
+        "type": "exit_plan_mode",
+        "next_action": "final_answer",
+        "message": "已完成白色运动鞋搜索，并生成海报。",
+        "reason": "两个步骤都已完成"
+      }
+    ]
+  },
+  {
+    "id": "plan_mode_unknown_tool_rejected_001",
+    "category": "plan_mode",
+    "suite": "plan_mode",
+    "scenario_id": "plan_mode_unknown_tool_rejected",
+    "text": "调用不存在的工具。",
+    "execution_strategy": "react",
+    "expected_intent": "multi_step_orchestration",
+    "expected_capability": "multi_step_orchestration",
+    "expected_tools": [],
+    "expected_response_contains": [
+      "计划无效"
+    ],
+    "expected_plan_status": "failed",
+    "expected_decision_types": [
+      "enter_plan_mode",
+      "plan_rejected"
+    ],
+    "expected_trace_nodes": [
+      "assistant",
+      "apply_plan_mode_transition"
+    ],
+    "expected_error_codes": [
+      "unknown_tool"
+    ],
+    "expected_chat_calls": 1,
+    "scripted_chat_outputs": [
+      {
+        "type": "enter_plan_mode",
+        "plan": {
+          "goal": "调用不存在的工具",
+          "steps": [
+            {
+              "step_id": "step_1",
+              "action": "missing_capability",
+              "tool_name": "missing_tool",
+              "input_refs": [],
+              "depends_on": [],
+              "required_inputs": [],
+              "optional": false,
+              "reason": "测试未知工具拒绝"
+            }
+          ]
+        },
+        "reason": "测试未知工具拒绝"
+      }
+    ]
+  },
+  {
+    "id": "plan_mode_revise_after_tool_failure_001",
+    "category": "plan_mode",
+    "suite": "plan_mode",
+    "scenario_id": "plan_mode_revise_after_tool_failure",
+    "text": "先比价；如果没有候选商品，就生成一张白色运动鞋海报。",
+    "execution_strategy": "plan_and_solve",
+    "expected_intent": "multi_step_orchestration",
+    "expected_capability": "multi_step_orchestration",
+    "expected_tools": [
+      "price_compare",
+      "image_generation"
+    ],
+    "expected_response_contains": [
+      "重规划"
+    ],
+    "expected_plan_status": "completed",
+    "expected_final_answer_source": "assistant_loop",
+    "expected_plan_revision_count": 1,
+    "expected_decision_types": [
+      "enter_plan_mode",
+      "tool_call",
+      "exit_plan_mode"
+    ],
+    "expected_observation_tools": [
+      "price_compare",
+      "image_generation"
+    ],
+    "expected_trace_nodes": [
+      "assistant",
+      "apply_plan_mode_transition",
+      "execute_tool"
+    ],
+    "expected_error_codes": [
+      "tool_input_invalid"
+    ],
+    "expected_chat_calls": 5,
+    "scripted_chat_outputs": [
+      {
+        "type": "enter_plan_mode",
+        "plan": {
+          "goal": "先尝试比价",
+          "steps": [
+            {
+              "step_id": "step_1",
+              "action": "compare_price",
+              "tool_name": "price_compare",
+              "input_refs": [],
+              "depends_on": [],
+              "required_inputs": [
+                "query"
+              ],
+              "optional": false,
+              "reason": "先按用户要求尝试比价"
+            }
+          ]
+        },
+        "reason": "先按用户要求尝试比价"
+      },
+      {
+        "type": "tool_call",
+        "step_id": "step_1",
+        "tool_name": "price_compare",
+        "tool_input": {
+          "query": "白色低帮运动鞋"
+        },
+        "reason": "尝试比价"
+      },
+      {
+        "type": "enter_plan_mode",
+        "plan": {
+          "goal": "比价失败后生成海报",
+          "steps": [
+            {
+              "step_id": "step_1",
+              "action": "generate_image",
+              "tool_name": "image_generation",
+              "input_refs": [],
+              "depends_on": [],
+              "required_inputs": [
+                "prompt"
+              ],
+              "optional": false,
+              "reason": "按照用户给出的 fallback 生成海报"
+            }
+          ]
+        },
+        "reason": "price_compare observation 显示缺少商品候选，需要重规划"
+      },
+      {
+        "type": "tool_call",
+        "step_id": "step_1",
+        "tool_name": "image_generation",
+        "tool_input": {
+          "prompt": "生成一张白色低帮运动鞋商品海报",
+          "product_title": "白色低帮运动鞋"
+        },
+        "reason": "执行重规划后的海报生成步骤"
+      },
+      {
+        "type": "exit_plan_mode",
+        "next_action": "final_answer",
+        "message": "比价缺少候选商品，已重规划并生成白色运动鞋海报。",
+        "reason": "fallback 步骤完成"
+      }
+    ]
+  }
+]
